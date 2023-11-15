@@ -5,41 +5,23 @@ package cl.NexuCompra.modelo;
  *
  * @author Andaur-Cornejo
  */
-public class Usuario {
+public abstract class Usuario implements ICalculable{
     
-    private int id;
-    private String rut;
-    private String nombre;
-    private String apellido;
-    private String email;
-    private String contraseña;
+    protected  String nombre;
+    protected  String rut;
+    protected  String apellido;
+    protected  String email;
+    protected  String contraseña;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String rut, String nombre, String apellido, String email, String contraseña) {
-        this.id = id;
-        this.rut = rut;
+    public Usuario(String nombre, String rut, String apellido, String email, String contraseña) {
         this.nombre = nombre;
+        this.rut = rut;
         this.apellido = apellido;
         this.email = email;
         this.contraseña = contraseña;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getRut() {
-        return rut;
-    }
-
-    public void setRut(String rut) {
-        this.rut = rut;
     }
 
     public String getNombre() {
@@ -48,6 +30,14 @@ public class Usuario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getRut() {
+        return rut;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
     }
 
     public String getApellido() {
@@ -76,9 +66,11 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", rut=" + rut + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", contrase\u00f1a=" + contraseña + '}';
+        return "Usuario{" + "nombre=" + nombre + ", rut=" + rut + ", apellido=" + apellido + ", email=" + email + ", contrase\u00f1a=" + contraseña + '}';
     }
-    
+
+   
+   
     
     
 }
