@@ -41,7 +41,7 @@ public class Registro {
             return true;
             
         } catch (SQLException e) {
-            System.out.println("Error SQL al agregar Libro " + e.getMessage() );
+            System.out.println("Error SQL al agregar producto " + e.getMessage() );
             return false;
         }
     }
@@ -92,7 +92,7 @@ public class Registro {
             return true;
             
         } catch (SQLException e) {
-            System.out.println("Error SQL al actualizar Libro " + e.getMessage() );
+            System.out.println("Error SQL al actualizar producto " + e.getMessage() );
             return false;
         }
     }
@@ -123,7 +123,7 @@ public class Registro {
             cnx.close();
             
         } catch (SQLException e) {
-            System.out.println("Error SQL al listar Libro por id" + e.getMessage() );
+            System.out.println("Error SQL al listar producto por codigo" + e.getMessage() );
         }
         return prod;
     }
@@ -135,7 +135,7 @@ public class Registro {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "select * from libro order by titulo";
+            String query = "select * from producto order by codigo";
             PreparedStatement stmt = cnx.prepareStatement(query);
             
             ResultSet rs = stmt.executeQuery();
@@ -156,7 +156,7 @@ public class Registro {
             cnx.close();
             
         } catch (SQLException e) {
-            System.out.println("Error SQL al listar Libros " + e.getMessage() );
+            System.out.println("Error SQL al listar producto " + e.getMessage() );
         }
         return lista;
     }
