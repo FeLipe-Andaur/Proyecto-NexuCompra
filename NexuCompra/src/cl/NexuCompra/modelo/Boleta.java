@@ -6,6 +6,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Andaur - Cornejo
+ * @version 1.0
  */
 public class Boleta {
     

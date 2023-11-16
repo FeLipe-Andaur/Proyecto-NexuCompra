@@ -3,7 +3,8 @@ package cl.NexuCompra.modelo;
 
 /**
  *
- * @author Felipe
+ * @author Andaur-Cornejo
+ * @version 1.0
  */
 public interface ICalculable {
     

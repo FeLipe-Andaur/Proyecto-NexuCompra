@@ -4,6 +4,7 @@ package cl.NexuCompra.modelo;
 /**
  *
  * @author Andaur-Cornejo
+ * @version 1.0
  */
 public abstract class Usuario implements ICalculable{
     

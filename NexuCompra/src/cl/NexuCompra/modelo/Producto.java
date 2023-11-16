@@ -1,9 +1,12 @@
 
 package cl.NexuCompra.modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author Andaur - Cornejo
+ * @version 1.0
  */
 public class Producto extends Usuario{
     
@@ -65,6 +68,14 @@ public class Producto extends Usuario{
     @Override
     public String toString() {
         return "Producto{" + "nomproducto=" + nomproducto + ", descripcion=" + descripcion + ", codigo=" + codigo + ", precio=" + precio + ", cantidad=" + cantidad + '}' + " " + super.toString();
+    }
+
+    public Date getPublicacion() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setCodProd(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
  
