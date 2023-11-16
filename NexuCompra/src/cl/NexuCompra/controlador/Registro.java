@@ -23,7 +23,7 @@ public class Registro {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            date = prod.getPublicacion();
+           
             
             String query = "insert into producto(nombre,descripcion,codigo,precio,cantidad) values(?,?,?,?,?)";
             PreparedStatement stmt = cnx.prepareStatement(query);
