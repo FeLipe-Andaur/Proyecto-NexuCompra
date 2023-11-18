@@ -8,7 +8,7 @@ import java.util.Date;
  * @author Andaur - Cornejo
  * @version 1.0
  */
-public class Producto extends Usuario{
+public class Producto {
     
     private String nomproducto,descripcion;
     private int codigo,precio,cantidad;
@@ -16,8 +16,7 @@ public class Producto extends Usuario{
     public Producto() {
     }
 
-    public Producto(String nomproducto, String descripcion, int codigo, int precio, int cantidad, String nombre, String rut, String apellido, String email, String contraseña) {
-        super(nombre, rut, apellido, email, contraseña);
+    public Producto(String nomproducto, String descripcion, int codigo, int precio, int cantidad) {
         this.nomproducto = nomproducto;
         this.descripcion = descripcion;
         this.codigo = codigo;
@@ -67,8 +66,10 @@ public class Producto extends Usuario{
 
     @Override
     public String toString() {
-        return "Producto{" + "nomproducto=" + nomproducto + ", descripcion=" + descripcion + ", codigo=" + codigo + ", precio=" + precio + ", cantidad=" + cantidad + '}' + " " + super.toString();
+        return "Producto{" + "nomproducto=" + nomproducto + ", descripcion=" + descripcion + ", codigo=" + codigo + ", precio=" + precio + ", cantidad=" + cantidad + '}';
     }
+
+    
 
   
 

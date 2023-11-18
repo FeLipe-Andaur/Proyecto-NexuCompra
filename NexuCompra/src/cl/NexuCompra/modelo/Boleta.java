@@ -10,15 +10,15 @@ import java.util.ArrayList;
  */
 public class Boleta {
     
-    ArrayList<Usuario>ColeccionProd;
+    ArrayList<Producto>ColeccionProd;
 
     public Boleta() {
         ColeccionProd = new ArrayList<>();
     }
     
-    public boolean agregarProducto(Usuario user){
+    public boolean agregarProducto(Producto prod){
     
-        return ColeccionProd.add(user);
+        return ColeccionProd.add(prod);
     
     }
     

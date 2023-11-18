@@ -6,22 +6,20 @@ package cl.NexuCompra.modelo;
  * @author Andaur-Cornejo
  * @version 1.0
  */
-public abstract class Usuario implements ICalculable{
+public  class Usuario {
     
-    protected  String nombre;
-    protected  String rut;
-    protected  String apellido;
-    protected  String email;
-    protected  String contraseña;
+    private  String nombre;
+    private  String rut;
+    private  String apellido;
+    private  String contraseña;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String rut, String apellido, String email, String contraseña) {
+    public Usuario(String nombre, String rut, String apellido, String contraseña) {
         this.nombre = nombre;
         this.rut = rut;
         this.apellido = apellido;
-        this.email = email;
         this.contraseña = contraseña;
     }
 
@@ -49,14 +47,6 @@ public abstract class Usuario implements ICalculable{
         this.apellido = apellido;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getContraseña() {
         return contraseña;
     }
@@ -67,11 +57,9 @@ public abstract class Usuario implements ICalculable{
 
     @Override
     public String toString() {
-        return "Usuario{" + "nombre=" + nombre + ", rut=" + rut + ", apellido=" + apellido + ", email=" + email + ", contrase\u00f1a=" + contraseña + '}';
+        return "Usuario{" + "nombre=" + nombre + ", rut=" + rut + ", apellido=" + apellido + ", contrase\u00f1a=" + contraseña + '}';
     }
 
    
-   
-    
-    
+
 }

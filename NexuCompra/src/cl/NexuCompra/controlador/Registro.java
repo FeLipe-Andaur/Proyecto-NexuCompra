@@ -16,37 +16,34 @@ import java.util.ArrayList;
  */
 public class Registro {
     
-    public boolean agregar(Producto prod)
-    {
-        Date date;
-        try {
-            Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexion();
+   public boolean agregarProducto(Producto prod) throws SQLException {
+       
+    String query = "INSERT INTO producto(nombre, descripcion, codigo, precio, cantidad) VALUES(?,?,?,?,?)";
+    
+    try (Connection cnx = new Conexion().obtenerConexion();
             
-           
-            
-            String query = "insert into producto(nombre,descripcion,codigo,precio,cantidad) values(?,?,?,?,?)";
-            PreparedStatement stmt = cnx.prepareStatement(query);
-            stmt.setString(1, prod.getNomproducto());
-            stmt.setString(2, prod.getDescripcion());
-            stmt.setInt(4,prod.getCodigo());
-            stmt.setInt(5,prod.getPrecio());
-            stmt.setInt(6,prod.getCantidad());
-           
-            
-            stmt.executeUpdate();
-            stmt.close();
-            cnx.close();
-            
-            return true;
-            
-        } catch (SQLException e) {
-            System.out.println("Error SQL al agregar producto " + e.getMessage() );
-            return false;
-        }
+         PreparedStatement stmt = cnx.prepareStatement(query)) {
+
+        stmt.setString(1, prod.getNomproducto());
+        stmt.setString(2, prod.getDescripcion());
+        stmt.setInt(4, prod.getCodigo());
+        stmt.setInt(5, prod.getPrecio());
+        stmt.setInt(6, prod.getCantidad());
+
+        stmt.executeUpdate();
+        
+        return true;
+        
+    } catch (SQLException e) {
+        
+        System.out.println("Error SQL al agregar producto: " + e.getMessage());
+        return false;
+        
     }
     
-    public boolean eliminar(int codProd)
+}
+    
+    public boolean eliminarProducto(int codProd)
     {
         
         try {
@@ -70,7 +67,7 @@ public class Registro {
         }
     }
     
-    public boolean actualizar(Producto prod)
+    public boolean actualizarProducto(Producto prod)
     {
         try {
             Conexion con = new Conexion();
@@ -97,7 +94,7 @@ public class Registro {
         }
     }
     
-    public Producto buscarPorCod(int codProd)
+    public Producto buscarCodProducto(int codProd)
     {
         Producto prod = new Producto();
         try {
@@ -128,7 +125,7 @@ public class Registro {
         return prod;
     }
     
-     public ArrayList<Producto> buscarTodos()
+     public ArrayList<Producto> buscarTodosProducto()
     {
         ArrayList<Producto> lista = new ArrayList<>();
         try {
