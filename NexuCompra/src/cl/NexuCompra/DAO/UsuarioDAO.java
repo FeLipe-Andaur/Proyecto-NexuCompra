@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class UsuarioDAO {
     
-     public boolean agregarUsuario(Usuario user) throws SQLException {
+    public boolean agregarUsuario(Usuario user) throws SQLException {
        
     String query = "INSERT INTO producto(nombre, rut, apellido, contraseña, ) VALUES(?,?,?,?)";
     
