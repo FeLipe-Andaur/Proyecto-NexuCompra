@@ -9,14 +9,14 @@ package cl.NexuCompra.modelo;
 public  class Usuario {
     
     private  String nombre;
-    private  String rut;
+    private  int rut;
     private  String apellido;
     private  String contraseña;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String rut, String apellido, String contraseña) {
+    public Usuario(String nombre, int rut, String apellido, String contraseña) {
         this.nombre = nombre;
         this.rut = rut;
         this.apellido = apellido;
@@ -31,11 +31,11 @@ public  class Usuario {
         this.nombre = nombre;
     }
 
-    public String getRut() {
+    public int getRut() {
         return rut;
     }
 
-    public void setRut(String rut) {
+    public void setRut(int rut) {
         this.rut = rut;
     }
 
@@ -59,6 +59,8 @@ public  class Usuario {
     public String toString() {
         return "Usuario{" + "nombre=" + nombre + ", rut=" + rut + ", apellido=" + apellido + ", contrase\u00f1a=" + contraseña + '}';
     }
+
+  
 
    
 

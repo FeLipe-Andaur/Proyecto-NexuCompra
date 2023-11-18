@@ -1,27 +1,23 @@
+package cl.NexuCompra.DAO;
 
-package cl.NexuCompra.controlador;
 
-import cl.NexuCompra.DAO.ProductoDAO;
 import cl.NexuCompra.DataBase.Conexion;
-
 import cl.NexuCompra.modelo.Producto;
-import java.util.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+
 
 /**
  *
- * @author Andaur-Cornejo
+ * @author Felipe
  */
-public class Registro {
+public class ProductoDAO {
     
-  private ProductoDAO productoDAO = new ProductoDAO();
-   
-    
-   public boolean agregarProducto(Producto prod) throws SQLException {
+    public boolean agregarProducto(Producto prod) throws SQLException {
        
     String query = "INSERT INTO producto(nombre, descripcion, codigo, precio, cantidad) VALUES(?,?,?,?,?)";
     
@@ -37,7 +33,7 @@ public class Registro {
 
         stmt.executeUpdate();
         
-        return productoDAO.agregarProducto(prod);
+        return true;
         
     } catch (SQLException e) {
         
@@ -130,7 +126,7 @@ public class Registro {
         return prod;
     }
     
-     public ArrayList<Producto> buscarTodosProducto()
+     public ArrayList<Producto> buscarTodosProductos()
     {
         ArrayList<Producto> lista = new ArrayList<>();
         try {

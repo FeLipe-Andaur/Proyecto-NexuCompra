@@ -1,7 +1,7 @@
 
 package cl.NexuCompra.modelo;
 
-import java.util.Date;
+
 
 /**
  *
