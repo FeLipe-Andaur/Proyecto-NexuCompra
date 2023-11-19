@@ -70,7 +70,18 @@ public class Producto {
     }
 
     
-
+    public void imprimirDetalles(){
+    
+        System.out.println("nombre: "+ nomproducto);
+        System.out.println("descripcion: "+ descripcion);
+        System.out.println("codigo: "+ codigo);
+        System.out.println("precio: "+"$"+ precio);
+        System.out.println("cantidad: "+ cantidad);
+    
+    
+    
+    
+    }
   
 
     public void setCodProd(int aInt) {

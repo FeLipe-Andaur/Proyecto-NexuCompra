@@ -15,7 +15,7 @@ public class Boleta {
     public Boleta() {
         ColeccionProd = new ArrayList<>();
     }
-    
+     
     public boolean agregarProducto(Producto prod){
     
         return ColeccionProd.add(prod);
