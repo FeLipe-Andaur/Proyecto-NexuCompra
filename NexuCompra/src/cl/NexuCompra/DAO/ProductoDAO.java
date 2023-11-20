@@ -27,9 +27,9 @@ public class ProductoDAO {
 
         stmt.setString(1, prod.getNomproducto());
         stmt.setString(2, prod.getDescripcion());
-        stmt.setInt(4, prod.getCodigo());
-        stmt.setInt(5, prod.getPrecio());
-        stmt.setInt(6, prod.getCantidad());
+        stmt.setInt(3, prod.getCodigo());
+        stmt.setInt(4, prod.getPrecio());
+        stmt.setInt(5, prod.getCantidad());
 
         stmt.executeUpdate();
         
