@@ -26,8 +26,8 @@ public class UsuarioDAO {
         stmt.setString(1, user.getNombre());
         stmt.setString(2, user.getApellido());
         stmt.setString(3, user.getRut());
-        stmt.setString(5, user.getCorreo());
-        stmt.setString(4, user.getContraseña());
+        stmt.setString(4, user.getCorreo());
+        stmt.setString(5, user.getContraseña());
         
         stmt.executeUpdate();
         
@@ -42,11 +42,11 @@ public class UsuarioDAO {
     
 }
     
-   public boolean eliminarUsuario(String rutUser) {
+   public boolean eliminarUsuario(String rut) {
     try (Conexion con = new Conexion(); Connection cnx = con.obtenerConexion()) {
-        String query = "DELETE FROM usuario WHERE rutUser=?";
+        String query = "DELETE FROM usuario WHERE rut=?";
         try (PreparedStatement stmt = cnx.prepareStatement(query)) {
-            stmt.setString(1, rutUser);
+            stmt.setString(1, rut);
             stmt.executeUpdate();
         }
         return true;
@@ -67,8 +67,8 @@ public class UsuarioDAO {
            stmt.setString(1, user.getNombre());
            stmt.setString(2, user.getApellido());
            stmt.setString(3, user.getRut());
-           stmt.setString(5, user.getCorreo());
-           stmt.setString(4, user.getContraseña());
+           stmt.setString(4, user.getCorreo());
+           stmt.setString(5, user.getContraseña());
                        
             stmt.executeUpdate();
             stmt.close();
@@ -82,7 +82,7 @@ public class UsuarioDAO {
         }
     }
     
-    public Usuario buscarUsuarioRut(int rutUser)
+    public Usuario buscarUsuarioRut(String rut)
     {
         Usuario user = new Usuario();
         try {
@@ -91,7 +91,7 @@ public class UsuarioDAO {
             
             String query = "select * from usuario where rutUser=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
-            stmt.setInt(1, rutUser);
+            stmt.setString(1, rut);
             
             ResultSet rs = stmt.executeQuery();
             

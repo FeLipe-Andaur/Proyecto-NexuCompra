@@ -66,13 +66,13 @@ public class ProductoDAO {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "update producto set nombre=?,descripcion=?,codigo=?,precio=?,cantidad=? where codigo=?";
+            String query = "update producto set nombre=?,descripcion=?,precio=?,cantidad=? where codigo=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setString(1, prod.getNomproducto());
             stmt.setString(2, prod.getDescripcion());
-            stmt.setInt(3,prod.getCodigo());
-            stmt.setInt(4,prod.getPrecio());
-            stmt.setInt(5, prod.getCantidad());
+            stmt.setInt(3,prod.getPrecio());
+            stmt.setInt(4, prod.getCantidad());
+            stmt.setInt(5,prod.getCodigo());
            
             
             stmt.executeUpdate();
@@ -87,7 +87,7 @@ public class ProductoDAO {
         }
     }
     
-    public Producto buscarCodProducto(int codigo)
+    public Producto buscarProductoPorCodigo(int codigo)
     {
         Producto prod = new Producto();
         try {
@@ -107,6 +107,15 @@ public class ProductoDAO {
                 prod.setPrecio(rs.getInt("precio"));
                 prod.setCantidad(rs.getInt("cantidad"));
                 
+                System.out.println("Detalles del producto encontrado:");
+                System.out.println("Código: " + prod.getCodigo());
+                System.out.println("Nombre: " + prod.getNomproducto());
+                System.out.println("Descripción: " + prod.getDescripcion());
+                System.out.println("Precio: " + prod.getPrecio());
+                System.out.println("Cantidad: " + prod.getCantidad());
+                
+            }else{
+            System.out.println(" No se encontro el producto con el codigo: " + codigo);
             }
             rs.close();
             stmt.close();
@@ -122,7 +131,7 @@ public class ProductoDAO {
     {
         ArrayList<Producto> lista = new ArrayList<>();
         try (Conexion con = new Conexion();Connection cnx = con.obtenerConexion();
-             PreparedStatement stmt = cnx.prepareStatement("select * from usuario by codigo");
+             PreparedStatement stmt = cnx.prepareStatement("select * from producto order by codigo");
               ResultSet rs = stmt.executeQuery()  ){
                                   
         
@@ -140,6 +149,17 @@ public class ProductoDAO {
             rs.close();
             stmt.close();
             cnx.close();
+            
+            
+             System.out.println("Detalles de todos los productos:");
+        for (Producto producto : lista) {
+            System.out.println("Código: " + producto.getCodigo());
+            System.out.println("Nombre: " + producto.getNomproducto());
+            System.out.println("Descripción: " + producto.getDescripcion());
+            System.out.println("Precio: " + producto.getPrecio());
+            System.out.println("Cantidad: " + producto.getCantidad());
+            System.out.println("-------------------");
+        }
             
         } catch (SQLException e) {
             System.out.println("Error SQL al listar producto " + e.getMessage() );
