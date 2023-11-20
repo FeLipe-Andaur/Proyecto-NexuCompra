@@ -47,7 +47,7 @@ public class ProductoDAO {
     public boolean eliminarProducto(int codigo)
     {
         try (Conexion con = new Conexion();Connection cnx = con.obtenerConexion()){
-           String query = "delete from producto where codProd=?"; 
+           String query = "delete from producto where codigo=?"; 
            try (PreparedStatement stmt = cnx.prepareStatement(query)){
             stmt.setInt(1, codigo);
             stmt.executeUpdate();

@@ -26,7 +26,8 @@ public class NewClass {
         
         
         
-        boolean prodDAO = new ProductoDAO().agregarProducto(prod1);
+        //boolean prodDAO = new ProductoDAO().agregarProducto(prod1);
+        boolean prodDAO = new ProductoDAO().eliminarProducto(12344);
         
         
         
