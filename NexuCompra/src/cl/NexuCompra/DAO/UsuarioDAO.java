@@ -2,7 +2,6 @@
 package cl.NexuCompra.DAO;
 
 import cl.NexuCompra.DataBase.Conexion;
-import cl.NexuCompra.modelo.Producto;
 import cl.NexuCompra.modelo.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,7 +17,7 @@ public class UsuarioDAO {
     
     public boolean agregarUsuario(Usuario user) throws SQLException {
        
-    String query = "INSERT INTO producto(nombre, rut, apellido, contraseña, ) VALUES(?,?,?,?)";
+    String query = "INSERT INTO usuario(nombre, rut, apellido,correo,contraseña ) VALUES(?,?,?,?,?)";
     
     try (Connection cnx = new Conexion().obtenerConexion();
             
@@ -26,10 +25,10 @@ public class UsuarioDAO {
 
         stmt.setString(1, user.getNombre());
         stmt.setString(2, user.getApellido());
-        stmt.setInt(3, user.getRut());
+        stmt.setString(3, user.getRut());
+        stmt.setString(5, user.getCorreo());
         stmt.setString(4, user.getContraseña());
-
-
+        
         stmt.executeUpdate();
         
         return true;
@@ -43,44 +42,34 @@ public class UsuarioDAO {
     
 }
     
-    public boolean eliminarUsuario(int rutUser)
-    {
-        
-        try {
-            Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexion();
-        
-            
-            String query = "delete from producto where codProd=?";
-            PreparedStatement stmt = cnx.prepareStatement(query);
-            stmt.setInt(1, rutUser);
-            
+   public boolean eliminarUsuario(String rutUser) {
+    try (Conexion con = new Conexion(); Connection cnx = con.obtenerConexion()) {
+        String query = "DELETE FROM usuario WHERE rutUser=?";
+        try (PreparedStatement stmt = cnx.prepareStatement(query)) {
+            stmt.setString(1, rutUser);
             stmt.executeUpdate();
-            stmt.close();
-            cnx.close();
-            
-            return true;
-            
-        } catch (SQLException e) {
-            System.out.println("Error SQL al eliminar usuario " + e.getMessage() );
-            return false;
         }
+        return true;
+    } catch (SQLException e) {
+        System.out.println("Error SQL al eliminar usuario: " + e.getMessage());
+        return false;
     }
-    
+}
+
     public boolean actualizarUusuario(Usuario user)
     {
         try {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "update producto set nombre=?,apellido=?,rut=?,contraseña=?";
+            String query = "update usuario set nombre=?,apellido=?,rut=?,correo=?,contraseña=? WHERE rut=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
-            stmt.setString(1, user.getNombre());
-            stmt.setString(2, user.getApellido());
-            stmt.setInt(3, user.getRut());
-            stmt.setString(4, user.getContraseña());
-           
-            
+           stmt.setString(1, user.getNombre());
+           stmt.setString(2, user.getApellido());
+           stmt.setString(3, user.getRut());
+           stmt.setString(5, user.getCorreo());
+           stmt.setString(4, user.getContraseña());
+                       
             stmt.executeUpdate();
             stmt.close();
             cnx.close();
@@ -110,17 +99,17 @@ public class UsuarioDAO {
                 
                 user.setNombre(rs.getString("nombre"));
                 user.setApellido(rs.getString("apellido"));
-                user.setRut(rs.getInt("rut"));
+                user.setRut(rs.getString("rut"));
+                user.setCorreo(rs.getString("correo"));
                 user.setContraseña(rs.getString("contraseña"));
-                
-                
+                                
             }
             rs.close();
             stmt.close();
             cnx.close();
             
         } catch (SQLException e) {
-            System.out.println("Error SQL al listar usuario por codigo" + e.getMessage() );
+            System.out.println("Error SQL al listar usuario por rut" + e.getMessage() );
         }
         return user;
     }
@@ -128,31 +117,24 @@ public class UsuarioDAO {
      public ArrayList<Usuario> buscarTodosUsuarios()
     {
         ArrayList<Usuario> lista = new ArrayList<>();
-        try {
-            Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexion();
-            
-            String query = "select * from usuario order by rut";
-            PreparedStatement stmt = cnx.prepareStatement(query);
-            
-            ResultSet rs = stmt.executeQuery();
+        try (Conexion con = new Conexion();Connection cnx = con.obtenerConexion();
+                PreparedStatement stmt = cnx.prepareStatement("select * from usuario by rut ");
+                ResultSet rs = stmt.executeQuery()){
+                
             
             while (rs.next()) {
                 Usuario user = new Usuario();
                 user.setNombre(rs.getString("nombre"));
                 user.setApellido(rs.getString("apellido"));
-                user.setRut(rs.getInt("rut"));
+                user.setRut(rs.getString("rut"));
+                user.setCorreo(rs.getString("correo"));
                 user.setContraseña(rs.getString("contraseña"));
-                
                 
                lista.add(user);
             }
-            rs.close();
-            stmt.close();
-            cnx.close();
-            
+                        
         } catch (SQLException e) {
-            System.out.println("Error SQL al listar producto " + e.getMessage() );
+            System.out.println("Error SQL al listar usuario " + e.getMessage() );
         }
         return lista;
     }

@@ -38,7 +38,7 @@ public class Registro {
 
         stmt.executeUpdate();
         
-        return productoDAO.agregarProducto(prod);
+        return true;
         
     } catch (SQLException e) {
         
@@ -49,24 +49,16 @@ public class Registro {
     
 }
     
-    public boolean eliminarProducto(int codProd)
+    public boolean eliminarProducto(int codigo)
     {
-        
-        try {
-            Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexion();
-        
-            
-            String query = "delete from producto where codProd=?";
-            PreparedStatement stmt = cnx.prepareStatement(query);
-            stmt.setInt(1, codProd);
-            
+        try (Conexion con = new Conexion();Connection cnx = con.obtenerConexion()){
+           String query = "delete from producto where codProd=?"; 
+           try (PreparedStatement stmt = cnx.prepareStatement(query)){
+            stmt.setInt(1, codigo);
             stmt.executeUpdate();
-            stmt.close();
-            cnx.close();
-            
-            return true;
-            
+          
+           }
+            return true;  
         } catch (SQLException e) {
             System.out.println("Error SQL al eliminar producto " + e.getMessage() );
             return false;
@@ -79,7 +71,7 @@ public class Registro {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "update producto set nombre=?,descripcion=?,codigo=?,precio=?,cantidad=? where codProducto=?";
+            String query = "update producto set nombre=?,descripcion=?,codigo=?,precio=?,cantidad=? where codigo=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setString(1, prod.getNomproducto());
             stmt.setString(2, prod.getDescripcion());
@@ -100,21 +92,21 @@ public class Registro {
         }
     }
     
-    public Producto buscarCodProducto(int codProd)
+    public Producto buscarCodProducto(int codigo)
     {
         Producto prod = new Producto();
         try {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "select * from producto where codProd=?";
+            String query = "select * from producto where codigo=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
-            stmt.setInt(1, codProd);
+            stmt.setInt(1, codigo);
             
             ResultSet rs = stmt.executeQuery();
             
             if (rs.next()) {
-                prod.setCodProd(rs.getInt("codprod"));
+                prod.setCodigo(rs.getInt("codigo"));
                 prod.setNomproducto(rs.getString("nombre"));
                 prod.setDescripcion(rs.getString("descripcion"));
                 prod.setPrecio(rs.getInt("precio"));
@@ -131,21 +123,17 @@ public class Registro {
         return prod;
     }
     
-     public ArrayList<Producto> buscarTodosProducto()
+     public ArrayList<Producto> buscarTodosProductos()
     {
         ArrayList<Producto> lista = new ArrayList<>();
-        try {
-            Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexion();
-            
-            String query = "select * from producto order by codigo";
-            PreparedStatement stmt = cnx.prepareStatement(query);
-            
-            ResultSet rs = stmt.executeQuery();
-            
+        try (Conexion con = new Conexion();Connection cnx = con.obtenerConexion();
+             PreparedStatement stmt = cnx.prepareStatement("select * from usuario by codigo");
+              ResultSet rs = stmt.executeQuery()  ){
+                                  
+        
             while (rs.next()) {
                 Producto prod = new Producto();
-                prod.setCodProd(rs.getInt("codLibro"));
+                prod.setCodigo(rs.getInt("codigo"));
                 prod.setNomproducto(rs.getString("nombre"));
                 prod.setDescripcion(rs.getString("descripcion"));
                 prod.setPrecio(rs.getInt("precio"));
@@ -167,7 +155,7 @@ public class Registro {
      
      public boolean agregarUsuario(Usuario user) throws SQLException {
        
-    String query = "INSERT INTO producto(nombre, rut, apellido, contraseña, ) VALUES(?,?,?,?)";
+    String query = "INSERT INTO usuario(nombre, rut, apellido,correo,contraseña ) VALUES(?,?,?,?,?)";
     
     try (Connection cnx = new Conexion().obtenerConexion();
             
@@ -175,10 +163,10 @@ public class Registro {
 
         stmt.setString(1, user.getNombre());
         stmt.setString(2, user.getApellido());
-        stmt.setInt(3, user.getRut());
+        stmt.setString(3, user.getRut());
+        stmt.setString(5, user.getCorreo());
         stmt.setString(4, user.getContraseña());
-
-
+        
         stmt.executeUpdate();
         
         return true;
@@ -192,44 +180,34 @@ public class Registro {
     
 }
     
-    public boolean eliminarUsuario(int rutUser)
-    {
-        
-        try {
-            Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexion();
-        
-            
-            String query = "delete from producto where codProd=?";
-            PreparedStatement stmt = cnx.prepareStatement(query);
-            stmt.setInt(1, rutUser);
-            
+   public boolean eliminarUsuario(String rutUser) {
+    try (Conexion con = new Conexion(); Connection cnx = con.obtenerConexion()) {
+        String query = "DELETE FROM usuario WHERE rutUser=?";
+        try (PreparedStatement stmt = cnx.prepareStatement(query)) {
+            stmt.setString(1, rutUser);
             stmt.executeUpdate();
-            stmt.close();
-            cnx.close();
-            
-            return true;
-            
-        } catch (SQLException e) {
-            System.out.println("Error SQL al eliminar usuario " + e.getMessage() );
-            return false;
         }
+        return true;
+    } catch (SQLException e) {
+        System.out.println("Error SQL al eliminar usuario: " + e.getMessage());
+        return false;
     }
-    
+}
+
     public boolean actualizarUusuario(Usuario user)
     {
         try {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "update producto set nombre=?,apellido=?,rut=?,contraseña=?";
+            String query = "update usuario set nombre=?,apellido=?,rut=?,correo=?,contraseña=? WHERE rut=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
-            stmt.setString(1, user.getNombre());
-            stmt.setString(2, user.getApellido());
-            stmt.setInt(3, user.getRut());
-            stmt.setString(4, user.getContraseña());
-           
-            
+           stmt.setString(1, user.getNombre());
+           stmt.setString(2, user.getApellido());
+           stmt.setString(3, user.getRut());
+           stmt.setString(5, user.getCorreo());
+           stmt.setString(4, user.getContraseña());
+                       
             stmt.executeUpdate();
             stmt.close();
             cnx.close();
@@ -259,17 +237,17 @@ public class Registro {
                 
                 user.setNombre(rs.getString("nombre"));
                 user.setApellido(rs.getString("apellido"));
-                user.setRut(rs.getInt("rut"));
+                user.setRut(rs.getString("rut"));
+                user.setCorreo(rs.getString("correo"));
                 user.setContraseña(rs.getString("contraseña"));
-                
-                
+                                
             }
             rs.close();
             stmt.close();
             cnx.close();
             
         } catch (SQLException e) {
-            System.out.println("Error SQL al listar usuario por codigo" + e.getMessage() );
+            System.out.println("Error SQL al listar usuario por rut" + e.getMessage() );
         }
         return user;
     }
@@ -277,35 +255,26 @@ public class Registro {
      public ArrayList<Usuario> buscarTodosUsuarios()
     {
         ArrayList<Usuario> lista = new ArrayList<>();
-        try {
-            Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexion();
-            
-            String query = "select * from usuario order by rut";
-            PreparedStatement stmt = cnx.prepareStatement(query);
-            
-            ResultSet rs = stmt.executeQuery();
+        try (Conexion con = new Conexion();Connection cnx = con.obtenerConexion();
+                PreparedStatement stmt = cnx.prepareStatement("select * from usuario by rut ");
+                ResultSet rs = stmt.executeQuery()){
+                
             
             while (rs.next()) {
                 Usuario user = new Usuario();
                 user.setNombre(rs.getString("nombre"));
                 user.setApellido(rs.getString("apellido"));
-                user.setRut(rs.getInt("rut"));
+                user.setRut(rs.getString("rut"));
+                user.setCorreo(rs.getString("correo"));
                 user.setContraseña(rs.getString("contraseña"));
-                
                 
                lista.add(user);
             }
-            rs.close();
-            stmt.close();
-            cnx.close();
-            
+                        
         } catch (SQLException e) {
-            System.out.println("Error SQL al listar producto " + e.getMessage() );
+            System.out.println("Error SQL al listar usuario " + e.getMessage() );
         }
         return lista;
     }
-     
-     
     
 }

@@ -44,24 +44,16 @@ public class ProductoDAO {
     
 }
     
-    public boolean eliminarProducto(int codProd)
+    public boolean eliminarProducto(int codigo)
     {
-        
-        try {
-            Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexion();
-        
-            
-            String query = "delete from producto where codProd=?";
-            PreparedStatement stmt = cnx.prepareStatement(query);
-            stmt.setInt(1, codProd);
-            
+        try (Conexion con = new Conexion();Connection cnx = con.obtenerConexion()){
+           String query = "delete from producto where codProd=?"; 
+           try (PreparedStatement stmt = cnx.prepareStatement(query)){
+            stmt.setInt(1, codigo);
             stmt.executeUpdate();
-            stmt.close();
-            cnx.close();
-            
-            return true;
-            
+          
+           }
+            return true;  
         } catch (SQLException e) {
             System.out.println("Error SQL al eliminar producto " + e.getMessage() );
             return false;
@@ -74,7 +66,7 @@ public class ProductoDAO {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "update producto set nombre=?,descripcion=?,codigo=?,precio=?,cantidad=? where codProducto=?";
+            String query = "update producto set nombre=?,descripcion=?,codigo=?,precio=?,cantidad=? where codigo=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setString(1, prod.getNomproducto());
             stmt.setString(2, prod.getDescripcion());
@@ -95,21 +87,21 @@ public class ProductoDAO {
         }
     }
     
-    public Producto buscarCodProducto(int codProd)
+    public Producto buscarCodProducto(int codigo)
     {
         Producto prod = new Producto();
         try {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "select * from producto where codProd=?";
+            String query = "select * from producto where codigo=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
-            stmt.setInt(1, codProd);
+            stmt.setInt(1, codigo);
             
             ResultSet rs = stmt.executeQuery();
             
             if (rs.next()) {
-                prod.setCodProd(rs.getInt("codprod"));
+                prod.setCodigo(rs.getInt("codigo"));
                 prod.setNomproducto(rs.getString("nombre"));
                 prod.setDescripcion(rs.getString("descripcion"));
                 prod.setPrecio(rs.getInt("precio"));
@@ -129,18 +121,14 @@ public class ProductoDAO {
      public ArrayList<Producto> buscarTodosProductos()
     {
         ArrayList<Producto> lista = new ArrayList<>();
-        try {
-            Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexion();
-            
-            String query = "select * from producto order by codigo";
-            PreparedStatement stmt = cnx.prepareStatement(query);
-            
-            ResultSet rs = stmt.executeQuery();
-            
+        try (Conexion con = new Conexion();Connection cnx = con.obtenerConexion();
+             PreparedStatement stmt = cnx.prepareStatement("select * from usuario by codigo");
+              ResultSet rs = stmt.executeQuery()  ){
+                                  
+        
             while (rs.next()) {
                 Producto prod = new Producto();
-                prod.setCodProd(rs.getInt("codLibro"));
+                prod.setCodigo(rs.getInt("codigo"));
                 prod.setNomproducto(rs.getString("nombre"));
                 prod.setDescripcion(rs.getString("descripcion"));
                 prod.setPrecio(rs.getInt("precio"));

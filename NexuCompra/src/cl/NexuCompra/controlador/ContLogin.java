@@ -1,10 +1,7 @@
 
 package cl.NexuCompra.controlador;
-
 import cl.NexuCompra.DAO.UsuarioDAO;
-import cl.NexuCompra.DataBase.Conexion;
 import cl.NexuCompra.modelo.Usuario;
-import java.util.ArrayList;
 
 /**
  *
@@ -12,30 +9,33 @@ import java.util.ArrayList;
  */
 public class ContLogin {
     
-    private Conexion con = new Conexion();
+    
     private UsuarioDAO userDAO = new UsuarioDAO();
+    
+     
 
     public ContLogin() {
+        this.userDAO= userDAO;
     }
-    
-    
-    public ContLogin(Conexion con) {
-        this.con=con;
-    }
-    
-   
-    
- public boolean validarLogin(int rut, String contrasenna) {
-     // Buscar al usuario por su rut
-     Usuario usuario = userDAO.buscarUsuarioRut(rut);
-     // Verificar si se encontró un usuario y la contraseña es correcta
-     if (usuario != null && usuario.getContraseña().equals(contrasenna)) {
-         System.out.println("Conexion Valida");
-         return true;
-     } else {
-         System.out.println("conexion invalida");
-         return false;
-     }
-}
+        
+               
+public boolean validarLogin(int rut, String contrasenna) {
+    try {
+        // Buscar al usuario por su rut
+        Usuario usuario = userDAO.buscarUsuarioRut(rut);
 
+        // Verificar si se encontró un usuario y la contraseña es correcta
+        if (usuario != null && usuario.getContraseña().equals(contrasenna)) {
+            System.out.println("Conexión Válida");
+            return true;
+        } else {
+            System.out.println("Conexión Inválida");
+            return false;
+        }
+    } catch (Exception e) {
+        // Manejar la excepción (puedes imprimir el error o registrar en un log)
+        e.printStackTrace();
+        return false;
+    }
+ }
 }
