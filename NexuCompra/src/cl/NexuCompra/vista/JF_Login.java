@@ -1,20 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package cl.NexuCompra.vista;
+
+import cl.NexuCompra.DataBase.Conexion;
+import com.sun.jdi.connect.spi.Connection;
+import java.awt.event.KeyEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Felipe
  */
 public class JF_Login extends javax.swing.JFrame {
+    
+    private Conexion con;
+    private Connection connection;
+
 
     /**
      * Creates new form JF_Login
      */
-    public JF_Login() {
+    public JF_Login() throws SQLException {
         initComponents();
+        
+        /*Inicializaciones*/
+        this.con= new Conexion();
+        this.connection = null;
     }
 
     /**
@@ -33,9 +46,9 @@ public class JF_Login extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jTxt_email = new javax.swing.JTextField();
+        jTxt_contraseña = new javax.swing.JTextField();
+        jBtn_login = new javax.swing.JButton();
         JPanel_Logo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -90,12 +103,16 @@ public class JF_Login extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel2.add(jLabel3, gridBagConstraints);
 
-        jTextField1.setText("jTextField1");
-        jTextField1.setMinimumSize(new java.awt.Dimension(64, 20));
-        jTextField1.setPreferredSize(new java.awt.Dimension(71, 25));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTxt_email.setMinimumSize(new java.awt.Dimension(64, 30));
+        jTxt_email.setPreferredSize(new java.awt.Dimension(71, 25));
+        jTxt_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTxt_emailActionPerformed(evt);
+            }
+        });
+        jTxt_email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTxt_emailKeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -104,26 +121,45 @@ public class JF_Login extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
-        jPanel2.add(jTextField1, gridBagConstraints);
+        jPanel2.add(jTxt_email, gridBagConstraints);
 
-        jTextField2.setText("jTextField2");
-        jTextField2.setPreferredSize(new java.awt.Dimension(71, 25));
+        jTxt_contraseña.setPreferredSize(new java.awt.Dimension(71, 25));
+        jTxt_contraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxt_contraseñaActionPerformed(evt);
+            }
+        });
+        jTxt_contraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTxt_contraseñaKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        jPanel2.add(jTextField2, gridBagConstraints);
+        jPanel2.add(jTxt_contraseña, gridBagConstraints);
 
-        jButton1.setText("Ingresar");
-        jButton1.setPreferredSize(new java.awt.Dimension(75, 30));
+        jBtn_login.setText("Ingresar");
+        jBtn_login.setPreferredSize(new java.awt.Dimension(75, 30));
+        jBtn_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtn_loginActionPerformed(evt);
+            }
+        });
+        jBtn_login.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtn_loginKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel2.add(jButton1, gridBagConstraints);
+        jPanel2.add(jBtn_login, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -166,10 +202,38 @@ public class JF_Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void jTxt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxt_emailActionPerformed
+        
+    }//GEN-LAST:event_jTxt_emailActionPerformed
 
+    private void jBtn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_loginActionPerformed
+        
+    }//GEN-LAST:event_jBtn_loginActionPerformed
+
+    private void jTxt_emailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxt_emailKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            jBtn_login.doClick();
+        }
+    }//GEN-LAST:event_jTxt_emailKeyPressed
+
+    private void jBtn_loginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtn_loginKeyPressed
+       if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            jBtn_login.doClick();
+    }//GEN-LAST:event_jBtn_loginKeyPressed
+    }
+    private void jTxt_contraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxt_contraseñaKeyPressed
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            jBtn_login.doClick();
+    }//GEN-LAST:event_jTxt_contraseñaKeyPressed
+   }
+    private void jTxt_contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxt_contraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxt_contraseñaActionPerformed
+    /*Metodos custumizados*/
+   
     /**
      * @param args the command line arguments
      */
@@ -200,7 +264,11 @@ public class JF_Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JF_Login().setVisible(true);
+                try {
+                    new JF_Login().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JF_Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -208,13 +276,13 @@ public class JF_Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanel_Login;
     private javax.swing.JPanel JPanel_Logo;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBtn_login;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTxt_contraseña;
+    private javax.swing.JTextField jTxt_email;
     // End of variables declaration//GEN-END:variables
 }
