@@ -52,7 +52,7 @@ public class Registro {
     public boolean eliminarProducto(int codigo)
     {
         try (Conexion con = new Conexion();Connection cnx = con.obtenerConexion()){
-           String query = "delete from producto where codProd=?"; 
+           String query = "delete from producto where codigo=?"; 
            try (PreparedStatement stmt = cnx.prepareStatement(query)){
             stmt.setInt(1, codigo);
             stmt.executeUpdate();
@@ -127,7 +127,7 @@ public class Registro {
     {
         ArrayList<Producto> lista = new ArrayList<>();
         try (Conexion con = new Conexion();Connection cnx = con.obtenerConexion();
-             PreparedStatement stmt = cnx.prepareStatement("select * from usuario by codigo");
+             PreparedStatement stmt = cnx.prepareStatement("select * from producto order by codigo");
               ResultSet rs = stmt.executeQuery()  ){
                                   
         
@@ -180,11 +180,11 @@ public class Registro {
     
 }
     
-   public boolean eliminarUsuario(String rutUser) {
+   public boolean eliminarUsuario(String rut) {
     try (Conexion con = new Conexion(); Connection cnx = con.obtenerConexion()) {
-        String query = "DELETE FROM usuario WHERE rutUser=?";
+        String query = "DELETE FROM usuario WHERE rut=?";
         try (PreparedStatement stmt = cnx.prepareStatement(query)) {
-            stmt.setString(1, rutUser);
+            stmt.setString(1, rut);
             stmt.executeUpdate();
         }
         return true;
@@ -220,16 +220,16 @@ public class Registro {
         }
     }
     
-    public Usuario buscarUsuarioRut(int rutUser)
+   public Usuario buscarUsuarioPorRut(String rut)
     {
         Usuario user = new Usuario();
         try {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "select * from usuario where rutUser=?";
+            String query = "select * from usuario where rut=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
-            stmt.setInt(1, rutUser);
+            stmt.setString(1, rut);
             
             ResultSet rs = stmt.executeQuery();
             
@@ -240,8 +240,20 @@ public class Registro {
                 user.setRut(rs.getString("rut"));
                 user.setCorreo(rs.getString("correo"));
                 user.setContraseña(rs.getString("contraseña"));
+                
+                System.out.println("Informacion del usuario encontrado:");
+                System.out.println("rut: " + user.getRut());
+                System.out.println("Nombre: " + user.getNombre());
+                System.out.println("Apellido: " + user.getApellido());
+                System.out.println("correo: " + user.getCorreo());
+                System.out.println("contraseña: " + user.getContraseña());
                                 
+            }else{
+            
+             System.out.println(" No se encontro el producto con el codigo: " + rut);
             }
+            
+            
             rs.close();
             stmt.close();
             cnx.close();
@@ -256,7 +268,7 @@ public class Registro {
     {
         ArrayList<Usuario> lista = new ArrayList<>();
         try (Conexion con = new Conexion();Connection cnx = con.obtenerConexion();
-                PreparedStatement stmt = cnx.prepareStatement("select * from usuario by rut ");
+                PreparedStatement stmt = cnx.prepareStatement("select * from usuario order by rut ");
                 ResultSet rs = stmt.executeQuery()){
                 
             
@@ -270,7 +282,17 @@ public class Registro {
                 
                lista.add(user);
             }
-                        
+                
+            System.out.println("Información de todos los usuarios:");
+        for (Usuario user : lista) {
+            System.out.println("Nombre: " + user.getNombre());
+            System.out.println("Apellido: " + user.getApellido());
+            System.out.println("Rut: " + user.getRut());
+            System.out.println("Correo: " + user.getCorreo());
+            System.out.println("Contraseña: " + user.getContraseña());
+            System.out.println("-------------------");
+        }
+        
         } catch (SQLException e) {
             System.out.println("Error SQL al listar usuario " + e.getMessage() );
         }

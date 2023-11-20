@@ -17,12 +17,12 @@ public class UsuarioDAO {
     
     public boolean agregarUsuario(Usuario user) throws SQLException {
        
-    String query = "INSERT INTO usuario(nombre, rut, apellido,correo,contraseña ) VALUES(?,?,?,?,?)";
+    String query = "INSERT INTO usuario(nombre,apellido,rut,correo,contraseña ) VALUES(?,?,?,?,?)";
     
     try (Connection cnx = new Conexion().obtenerConexion();
             
          PreparedStatement stmt = cnx.prepareStatement(query)) {
-
+ 
         stmt.setString(1, user.getNombre());
         stmt.setString(2, user.getApellido());
         stmt.setString(3, user.getRut());
@@ -62,13 +62,13 @@ public class UsuarioDAO {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "update usuario set nombre=?,apellido=?,rut=?,correo=?,contraseña=? WHERE rut=?";
+            String query = "update usuario set nombre=?,apellido=?,correo=?,contraseña=? WHERE rut=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
-           stmt.setString(1, user.getNombre());
-           stmt.setString(2, user.getApellido());
-           stmt.setString(3, user.getRut());
-           stmt.setString(4, user.getCorreo());
-           stmt.setString(5, user.getContraseña());
+            stmt.setString(1, user.getNombre());
+            stmt.setString(2, user.getApellido());
+            stmt.setString(3, user.getCorreo());
+            stmt.setString(4, user.getContraseña());
+            stmt.setString(5, user.getRut());
                        
             stmt.executeUpdate();
             stmt.close();
@@ -82,14 +82,14 @@ public class UsuarioDAO {
         }
     }
     
-    public Usuario buscarUsuarioRut(String rut)
+    public Usuario buscarUsuarioPorRut(String rut)
     {
         Usuario user = new Usuario();
         try {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "select * from usuario where rutUser=?";
+            String query = "select * from usuario where rut=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setString(1, rut);
             
@@ -102,8 +102,20 @@ public class UsuarioDAO {
                 user.setRut(rs.getString("rut"));
                 user.setCorreo(rs.getString("correo"));
                 user.setContraseña(rs.getString("contraseña"));
+                
+                System.out.println("Informacion del usuario encontrado:");
+                System.out.println("rut: " + user.getRut());
+                System.out.println("Nombre: " + user.getNombre());
+                System.out.println("Apellido: " + user.getApellido());
+                System.out.println("correo: " + user.getCorreo());
+                System.out.println("contraseña: " + user.getContraseña());
                                 
+            }else{
+            
+             System.out.println(" No se encontro el producto con el codigo: " + rut);
             }
+            
+            
             rs.close();
             stmt.close();
             cnx.close();
@@ -118,7 +130,7 @@ public class UsuarioDAO {
     {
         ArrayList<Usuario> lista = new ArrayList<>();
         try (Conexion con = new Conexion();Connection cnx = con.obtenerConexion();
-                PreparedStatement stmt = cnx.prepareStatement("select * from usuario by rut ");
+                PreparedStatement stmt = cnx.prepareStatement("select * from usuario order by rut ");
                 ResultSet rs = stmt.executeQuery()){
                 
             
@@ -132,7 +144,17 @@ public class UsuarioDAO {
                 
                lista.add(user);
             }
-                        
+                
+            System.out.println("Información de todos los usuarios:");
+        for (Usuario user : lista) {
+            System.out.println("Nombre: " + user.getNombre());
+            System.out.println("Apellido: " + user.getApellido());
+            System.out.println("Rut: " + user.getRut());
+            System.out.println("Correo: " + user.getCorreo());
+            System.out.println("Contraseña: " + user.getContraseña());
+            System.out.println("-------------------");
+        }
+        
         } catch (SQLException e) {
             System.out.println("Error SQL al listar usuario " + e.getMessage() );
         }

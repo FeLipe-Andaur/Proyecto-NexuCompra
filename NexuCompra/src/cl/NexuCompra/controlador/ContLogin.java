@@ -19,10 +19,10 @@ public class ContLogin {
     }
         
                
-public boolean validarLogin(int rut, String contrasenna) {
+public boolean validarLogin(String rut, String contrasenna) {
     try {
         // Buscar al usuario por su rut
-        Usuario usuario = userDAO.buscarUsuarioRut(rut);
+        Usuario usuario = userDAO.buscarUsuarioPorRut(rut);
 
         // Verificar si se encontró un usuario y la contraseña es correcta
         if (usuario != null && usuario.getContraseña().equals(contrasenna)) {

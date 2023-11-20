@@ -20,18 +20,38 @@ public class NewClass {
             
         Producto prod1 = new Producto("chetos", "light", 12344, 2000, 3);
         Producto prod2 = new Producto("cafe", "nescafe", 12245, 7000, 2);
-        Producto prod3 = new Producto("pan", "marraqueta", 88734, 4200, 7);
+        Producto prod3 = new Producto("pan", "marraqueta", 88734, 4200, 15);
+        Producto prod4 = new Producto("tallarines", "spagueti", 568945, 1500, 10);
         
-        Usuario user1 = new Usuario("pepito", "1234", "montañecez", "holamundo", "pepito123@gmail.com");
-        
-        
-        
-        //boolean prodDAO = new ProductoDAO().agregarProducto(prod1);
-        boolean prodDAO = new ProductoDAO().eliminarProducto(12344);
+        Usuario user1 = new Usuario("Juan", "Romero", "154632789", "Juanito@gmail.com", "Jaunitox321");
+        Usuario user2 = new Usuario("Maria", "Carmen", "128332152", "Maria@gmail.com", "Maria456");
+        Usuario user3 = new Usuario("Helena", "perez", "182733515", "Helena@gmail.com", "Helena789");
         
         
         
-        System.out.println(user1);
+        //Productos
+        
+        //boolean prodDAO = new ProductoDAO().agregarProducto(prod4);//Funciona
+        //boolean prodDAO = new ProductoDAO().eliminarProducto(12344);//Funciona
+        // boolean prodDAO  = new ProductoDAO().actualizarProducto(prod3);//Funciona
+        // Producto prodDAO = new ProductoDAO().buscarProductoPorCodigo(12245);//Funciona
+        // ArrayList<Producto> prodDAO = new ProductoDAO().buscarTodosProductos();//Funciona
+        
+        
+        //Usuarios
+        
+        //boolean userDAO = new UsuarioDAO().agregarUsuario(user3);//Funciona
+       // boolean userDAO = new UsuarioDAO().eliminarUsuario("128332152");//Funciona
+       // boolean userDAO = new UsuarioDAO().actualizarUusuario(user1);//Funciona
+      // Usuario userDao = new UsuarioDAO().buscarUsuarioPorRut("182733515");//Funciona
+      //ArrayList<Usuario> userDAO = new UsuarioDAO().buscarTodosUsuarios();//Funcional
+        
+        
+        
+        
+        
+        
+  
             
         
         Boleta bol = new Boleta();
@@ -41,13 +61,10 @@ public class NewClass {
         bol.agregarProducto(prod3);
        
         
-       prod1.imprimirDetalles();
-       System.out.println("-------------------");
-       prod2.imprimirDetalles();
-        System.out.println("------------------");
-       prod3.imprimirDetalles();
+     
         
                         
+    
        
                
         

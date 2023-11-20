@@ -9,20 +9,22 @@ package cl.NexuCompra.modelo;
 public  class Usuario {
     
     private  String nombre;
-    private  String rut;
     private  String apellido;
-    private  String contraseña;
+    private  String rut;
     private String correo;
+    private  String contraseña;
+    
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String rut, String apellido, String contraseña, String correo) {
+    public Usuario(String nombre,  String apellido ,String rut,String correo ,String contraseña) {
         this.nombre = nombre;
-        this.rut = rut;
         this.apellido = apellido;
-        this.contraseña = contraseña;
+        this.rut = rut;
         this.correo = correo;
+        this.contraseña = contraseña;
+        
     }
 
     public String getNombre() {
@@ -32,6 +34,14 @@ public  class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+      public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
 
     public String getRut() {
         return rut;
@@ -40,15 +50,15 @@ public  class Usuario {
     public void setRut(String rut) {
         this.rut = rut;
     }
-
-    public String getApellido() {
-        return apellido;
+    
+      public String getCorreo() {
+        return correo;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
-
+  
     public String getContraseña() {
         return contraseña;
     }
@@ -57,13 +67,7 @@ public  class Usuario {
         this.contraseña = contraseña;
     }
 
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
+  
 
     @Override
     public String toString() {
