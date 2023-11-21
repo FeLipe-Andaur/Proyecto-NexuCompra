@@ -17,7 +17,7 @@ public class UsuarioDAO {
     
     public boolean agregarUsuario(Usuario user) throws SQLException {
        
-    String query = "INSERT INTO usuario(nombre,apellido,rut,correo,contraseña ) VALUES(?,?,?,?,?)";
+    String query = "INSERT INTO usuario(nombre,apellido,rut ) VALUES(?,?,?)";
     
     try (Connection cnx = new Conexion().obtenerConexion();
             
@@ -26,8 +26,7 @@ public class UsuarioDAO {
         stmt.setString(1, user.getNombre());
         stmt.setString(2, user.getApellido());
         stmt.setString(3, user.getRut());
-        stmt.setString(4, user.getCorreo());
-        stmt.setString(5, user.getContraseña());
+      
         
         stmt.executeUpdate();
         
@@ -62,13 +61,11 @@ public class UsuarioDAO {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "update usuario set nombre=?,apellido=?,correo=?,contraseña=? WHERE rut=?";
+            String query = "update usuario set nombre=?,apellido=? WHERE rut=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setString(1, user.getNombre());
             stmt.setString(2, user.getApellido());
-            stmt.setString(3, user.getCorreo());
-            stmt.setString(4, user.getContraseña());
-            stmt.setString(5, user.getRut());
+            stmt.setString(3, user.getRut());
                        
             stmt.executeUpdate();
             stmt.close();
@@ -95,15 +92,13 @@ public class UsuarioDAO {
                 user.setRut(rs.getString("rut"));
                 user.setNombre(rs.getString("nombre"));
                 user.setApellido(rs.getString("apellido"));
-                user.setCorreo(rs.getString("correo"));  
-                user.setContraseña(rs.getString("contraseña"));
+                
                 
                 System.out.println("Informacion del usuario encontrado:");
                 System.out.println("rut: " + user.getRut());
                 System.out.println("Nombre: " + user.getNombre());
                 System.out.println("Apellido: " + user.getApellido());
-                System.out.println("correo: " + user.getCorreo());
-                System.out.println("contraseña: " + user.getContraseña());
+                
             }else{
               System.out.println(" No se encontro el producto con el codigo: " + rut);
             }
@@ -131,8 +126,7 @@ public class UsuarioDAO {
                 user.setNombre(rs.getString("nombre"));
                 user.setApellido(rs.getString("apellido"));
                 user.setRut(rs.getString("rut"));
-                user.setCorreo(rs.getString("correo"));
-                user.setContraseña(rs.getString("contraseña"));
+                
                 
                lista.add(user);
             }
@@ -142,8 +136,7 @@ public class UsuarioDAO {
             System.out.println("Nombre: " + user.getNombre());
             System.out.println("Apellido: " + user.getApellido());
             System.out.println("Rut: " + user.getRut());
-            System.out.println("Correo: " + user.getCorreo());
-            System.out.println("Contraseña: " + user.getContraseña());
+          
             System.out.println("-------------------");
         }
         

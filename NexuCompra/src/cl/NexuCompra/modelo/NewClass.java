@@ -23,9 +23,9 @@ public class NewClass {
         Producto prod3 = new Producto("pan", "marraqueta", 88734, 4200, 15);
         Producto prod4 = new Producto("tallarines", "spagueti", 568945, 1500, 10);
         
-        Usuario user1 = new Usuario("Juan", "Romero", "154632789", "Juanito@gmail.com", "Jaunitox321");
-        Usuario user2 = new Usuario("Maria", "Carmen", "128332152", "Maria@gmail.com", "Maria456");
-        Usuario user3 = new Usuario("Helena", "perez", "182733515", "Helena@gmail.com", "Helena789");
+        Usuario user1 = new Usuario("Juan", "Palomino", "195872364");
+        Usuario user2 = new Usuario("Maria", "Carmen", "128332152");
+        Usuario user3 = new Usuario("Helena", "perez", "182733515");
         
         
         
@@ -41,10 +41,10 @@ public class NewClass {
         //Usuarios
         
         //boolean userDAO = new UsuarioDAO().agregarUsuario(user3);//Funciona
-       // boolean userDAO = new UsuarioDAO().eliminarUsuario("128332152");//Funciona
+       //   boolean userDAO = new UsuarioDAO().eliminarUsuario("154632789");//Funciona
        // boolean userDAO = new UsuarioDAO().actualizarUusuario(user1);//Funciona
-      //  Usuario userDao = new UsuarioDAO().buscarUsuarioPorRut("182733515");//Funciona
-      //  ArrayList<Usuario> userDAO = new UsuarioDAO().buscarTodosUsuarios();//Funcional
+       //Usuario userDao = new UsuarioDAO().buscarUsuarioPorRut("182733515");//Funciona
+       // ArrayList<Usuario> userDAO = new UsuarioDAO().buscarTodosUsuarios();//Funciona
          
         
         

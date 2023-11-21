@@ -15,10 +15,10 @@ import javax.swing.JTextField;
  */
 public class JF_Login extends javax.swing.JFrame {
     
-    private ContLogin cl;
-    private Conexion con;
+    
+    private Conexion con ;
    
-    Conexion con = new Conexion();
+    
 
     /**
      * Creates new form JF_Login
@@ -29,7 +29,7 @@ public class JF_Login extends javax.swing.JFrame {
         
         
         /*Inicializaciones*/
-        this.cl = new ContLogin();
+   
         
         
     }
@@ -52,6 +52,9 @@ public class JF_Login extends javax.swing.JFrame {
         jBttn_ingresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(784, 692));
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(784, 692));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
@@ -133,11 +136,11 @@ public class JF_Login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(800, 700));
