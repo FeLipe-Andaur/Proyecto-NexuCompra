@@ -23,15 +23,15 @@ public class NewClass {
         Producto prod3 = new Producto("pan", "marraqueta", 88734, 4200, 15);
         Producto prod4 = new Producto("tallarines", "spagueti", 568945, 1500, 10);
         
-        Usuario user1 = new Usuario("Juan", "Romero", "154632789", "Juanito@gmail.com", "Jaunitox321");
-        Usuario user2 = new Usuario("Maria", "Carmen", "128332152", "Maria@gmail.com", "Maria456");
-        Usuario user3 = new Usuario("Helena", "perez", "182733515", "Helena@gmail.com", "Helena789");
+        Usuario user1 = new Usuario("Juan", "Romero", "154632789");
+        Usuario user2 = new Usuario("Maria", "Carmen", "128332152");
+        Usuario user3 = new Usuario("Helena", "perez", "182733515");
         
         
         
         //Productos
         
-        //boolean prodDAO = new ProductoDAO().agregarProducto(prod4);//Funciona
+        boolean prodDAO = new ProductoDAO().agregarProducto(prod4);//Funciona
         //boolean prodDAO = new ProductoDAO().eliminarProducto(12344);//Funciona
        // boolean prodDAO  = new ProductoDAO().actualizarProducto(prod3);//Funciona
        // Producto prodDAO = new ProductoDAO().buscarProductoPorCodigo(12245);//Funciona

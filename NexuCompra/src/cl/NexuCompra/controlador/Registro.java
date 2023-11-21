@@ -1,8 +1,6 @@
 
 package cl.NexuCompra.controlador;
 
-import cl.NexuCompra.DAO.ProductoDAO;
-import cl.NexuCompra.DAO.UsuarioDAO;
 import cl.NexuCompra.DataBase.Conexion;
 import cl.NexuCompra.modelo.Producto;
 import cl.NexuCompra.modelo.Usuario;
@@ -17,11 +15,7 @@ import java.util.ArrayList;
  * @author Andaur-Cornejo
  */
 public class Registro {
-    
-  private ProductoDAO productoDAO = new ProductoDAO();
-  private UsuarioDAO usuarioDAO = new UsuarioDAO();
    
-    
    public boolean agregarProducto(Producto prod) throws SQLException {
        
     String query = "INSERT INTO producto(nombre, descripcion, codigo, precio, cantidad) VALUES(?,?,?,?,?)";
@@ -155,7 +149,7 @@ public class Registro {
      
      public boolean agregarUsuario(Usuario user) throws SQLException {
        
-    String query = "INSERT INTO usuario(nombre, rut, apellido,correo,contraseña ) VALUES(?,?,?,?,?)";
+    String query = "INSERT INTO usuario(nombre, rut, apellido) VALUES(?,?,?)";
     
     try (Connection cnx = new Conexion().obtenerConexion();
             
@@ -164,8 +158,6 @@ public class Registro {
         stmt.setString(1, user.getNombre());
         stmt.setString(2, user.getApellido());
         stmt.setString(3, user.getRut());
-        stmt.setString(5, user.getCorreo());
-        stmt.setString(4, user.getContraseña());
         
         stmt.executeUpdate();
         
@@ -205,8 +197,6 @@ public class Registro {
            stmt.setString(1, user.getNombre());
            stmt.setString(2, user.getApellido());
            stmt.setString(3, user.getRut());
-           stmt.setString(5, user.getCorreo());
-           stmt.setString(4, user.getContraseña());
                        
             stmt.executeUpdate();
             stmt.close();
@@ -233,15 +223,11 @@ public class Registro {
                 user.setRut(rs.getString("rut"));
                 user.setNombre(rs.getString("nombre"));
                 user.setApellido(rs.getString("apellido"));
-                user.setCorreo(rs.getString("correo"));  
-                user.setContraseña(rs.getString("contraseña"));
                 
                 System.out.println("Informacion del usuario encontrado:");
                 System.out.println("rut: " + user.getRut());
                 System.out.println("Nombre: " + user.getNombre());
                 System.out.println("Apellido: " + user.getApellido());
-                System.out.println("correo: " + user.getCorreo());
-                System.out.println("contraseña: " + user.getContraseña());
             }else{
               System.out.println(" No se encontro el producto con el codigo: " + rut);
             }
@@ -268,8 +254,6 @@ public class Registro {
                 user.setNombre(rs.getString("nombre"));
                 user.setApellido(rs.getString("apellido"));
                 user.setRut(rs.getString("rut"));
-                user.setCorreo(rs.getString("correo"));
-                user.setContraseña(rs.getString("contraseña"));
                 
                lista.add(user);
             }
@@ -279,8 +263,6 @@ public class Registro {
             System.out.println("Nombre: " + user.getNombre());
             System.out.println("Apellido: " + user.getApellido());
             System.out.println("Rut: " + user.getRut());
-            System.out.println("Correo: " + user.getCorreo());
-            System.out.println("Contraseña: " + user.getContraseña());
             System.out.println("-------------------");
         }
         

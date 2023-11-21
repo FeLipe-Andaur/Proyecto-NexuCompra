@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 public class Conexion implements AutoCloseable {
 
+    
+    
     private Connection connection;
 
     public Conexion(Connection connection) {
