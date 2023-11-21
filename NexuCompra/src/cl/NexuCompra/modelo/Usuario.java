@@ -14,7 +14,7 @@ public  class Usuario {
 
     public Usuario() {
     }
-    
+
     public Usuario(String nombre, String apellido, String rut) {
         this.nombre = nombre;
         this.apellido = apellido;

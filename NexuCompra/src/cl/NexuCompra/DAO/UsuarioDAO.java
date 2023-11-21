@@ -16,9 +16,9 @@ import java.util.ArrayList;
 public class UsuarioDAO {
     
     public boolean agregarUsuario(Usuario user) throws SQLException {
-       
+
     String query = "INSERT INTO usuario(nombre,apellido,rut) VALUES(?,?,?)";
-    
+
     try (Connection cnx = new Conexion().obtenerConexion();
             
          PreparedStatement stmt = cnx.prepareStatement(query)) {
@@ -26,7 +26,7 @@ public class UsuarioDAO {
         stmt.setString(1, user.getNombre());
         stmt.setString(2, user.getApellido());
         stmt.setString(3, user.getRut());
-        
+
         stmt.executeUpdate();
         
         return true;
@@ -60,7 +60,7 @@ public class UsuarioDAO {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "update usuario set nombre=?,apellido=?,correo=?,contraseña=? WHERE rut=?";
+            String query = "update usuario set nombre=?,apellido=? WHERE rut=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setString(1, user.getNombre());
             stmt.setString(2, user.getApellido());
@@ -98,7 +98,7 @@ public class UsuarioDAO {
                 System.out.println("Apellido: " + user.getApellido());
 
             }else{
-              System.out.println(" No se encontro el producto con el codigo: " + rut);
+              System.out.println(" No se encontro ningún usuario con el rut: " + rut);
             }
             rs.close();
             stmt.close();
@@ -124,7 +124,7 @@ public class UsuarioDAO {
                 user.setNombre(rs.getString("nombre"));
                 user.setApellido(rs.getString("apellido"));
                 user.setRut(rs.getString("rut"));
-                
+     
                lista.add(user);
             }
                 
@@ -137,7 +137,7 @@ public class UsuarioDAO {
         }
         
         } catch (SQLException e) {
-            System.out.println("Error SQL al listar usuario " + e.getMessage() );
+            System.out.println("Error SQL al listar usuarios: " + e.getMessage() );
         }
         return lista;
     }

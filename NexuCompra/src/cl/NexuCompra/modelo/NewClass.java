@@ -31,7 +31,7 @@ public class NewClass {
         
         //Productos
         
-        boolean prodDAO = new ProductoDAO().agregarProducto(prod4);//Funciona
+        //boolean prodDAO = new ProductoDAO().agregarProducto(prod4);//Funciona
         //boolean prodDAO = new ProductoDAO().eliminarProducto(12344);//Funciona
        // boolean prodDAO  = new ProductoDAO().actualizarProducto(prod3);//Funciona
        // Producto prodDAO = new ProductoDAO().buscarProductoPorCodigo(12245);//Funciona
@@ -41,10 +41,10 @@ public class NewClass {
         //Usuarios
         
         //boolean userDAO = new UsuarioDAO().agregarUsuario(user3);//Funciona
-       // boolean userDAO = new UsuarioDAO().eliminarUsuario("128332152");//Funciona
+       //   boolean userDAO = new UsuarioDAO().eliminarUsuario("154632789");//Funciona
        // boolean userDAO = new UsuarioDAO().actualizarUusuario(user1);//Funciona
-      //  Usuario userDao = new UsuarioDAO().buscarUsuarioPorRut("182733515");//Funciona
-      //  ArrayList<Usuario> userDAO = new UsuarioDAO().buscarTodosUsuarios();//Funcional
+       //Usuario userDao = new UsuarioDAO().buscarUsuarioPorRut("182733515");//Funciona
+       // ArrayList<Usuario> userDAO = new UsuarioDAO().buscarTodosUsuarios();//Funciona
          
         
         

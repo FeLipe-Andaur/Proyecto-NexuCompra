@@ -148,17 +148,18 @@ public class Registro {
      
      
      public boolean agregarUsuario(Usuario user) throws SQLException {
-       
-    String query = "INSERT INTO usuario(nombre, rut, apellido) VALUES(?,?,?)";
+
+    String query = "INSERT INTO usuario(nombre,apellido,rut ) VALUES(?,?,?)";
+
     
     try (Connection cnx = new Conexion().obtenerConexion();
             
          PreparedStatement stmt = cnx.prepareStatement(query)) {
-
+ 
         stmt.setString(1, user.getNombre());
         stmt.setString(2, user.getApellido());
         stmt.setString(3, user.getRut());
-        
+
         stmt.executeUpdate();
         
         return true;
@@ -192,11 +193,13 @@ public class Registro {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "update usuario set nombre=?,apellido=?,rut=?,correo=?,contraseña=? WHERE rut=?";
+            String query = "update usuario set nombre=?,apellido=? WHERE rut=?";
             PreparedStatement stmt = cnx.prepareStatement(query);
-           stmt.setString(1, user.getNombre());
-           stmt.setString(2, user.getApellido());
-           stmt.setString(3, user.getRut());
+
+            stmt.setString(1, user.getNombre());
+            stmt.setString(2, user.getApellido());
+            stmt.setString(3, user.getRut());
+
                        
             stmt.executeUpdate();
             stmt.close();
@@ -210,7 +213,7 @@ public class Registro {
         }
     }
     
-   public Usuario buscarUsuarioPorRut(String rut) {
+    public Usuario buscarUsuarioPorRut(String rut) {
     Usuario user = new Usuario();
     try {
         Conexion con = new Conexion();
@@ -223,13 +226,15 @@ public class Registro {
                 user.setRut(rs.getString("rut"));
                 user.setNombre(rs.getString("nombre"));
                 user.setApellido(rs.getString("apellido"));
+
                 
                 System.out.println("Informacion del usuario encontrado:");
                 System.out.println("rut: " + user.getRut());
                 System.out.println("Nombre: " + user.getNombre());
                 System.out.println("Apellido: " + user.getApellido());
+
             }else{
-              System.out.println(" No se encontro el producto con el codigo: " + rut);
+              System.out.println(" No se encontro ningún usuario con el rut: " + rut);
             }
             rs.close();
             stmt.close();
@@ -240,6 +245,7 @@ public class Registro {
     }
     return user;
 }
+
     
      public ArrayList<Usuario> buscarTodosUsuarios()
     {
@@ -267,9 +273,9 @@ public class Registro {
         }
         
         } catch (SQLException e) {
-            System.out.println("Error SQL al listar usuario " + e.getMessage() );
+            System.out.println("Error SQL al listar usuarios: " + e.getMessage() );
         }
         return lista;
     }
-    
+
 }
