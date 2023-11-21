@@ -64,6 +64,11 @@ public class Principal extends javax.swing.JFrame {
         jlbl_apellido.setText("Apellido:");
 
         jbtn_ingresar.setText("Ingresar");
+        jbtn_ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_ingresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,6 +132,12 @@ public class Principal extends javax.swing.JFrame {
     private void jtxt_rutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_rutActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxt_rutActionPerformed
+
+    private void jbtn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_ingresarActionPerformed
+        IngresarProductos ventana = new IngresarProductos();
+        
+        ventana.setVisible(true);
+    }//GEN-LAST:event_jbtn_ingresarActionPerformed
 
     /**
      * @param args the command line arguments
