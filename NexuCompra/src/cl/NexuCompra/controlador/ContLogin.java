@@ -2,6 +2,8 @@
 package cl.NexuCompra.controlador;
 import cl.NexuCompra.DAO.UsuarioDAO;
 import cl.NexuCompra.modelo.Usuario;
+import cl.NexuCompra.vista.JF_Login;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,13 +12,20 @@ import cl.NexuCompra.modelo.Usuario;
 public class ContLogin {
     
     
-    private UsuarioDAO userDAO = new UsuarioDAO();
+    private UsuarioDAO userDAO;
     
-     
+
 
     public ContLogin() {
-        this.userDAO= userDAO;
+        
+        this.userDAO = new UsuarioDAO();
     }
+
+    public ContLogin(JF_Login aThis) {
+       
+    }
+
+   
         
                
 public boolean validarLogin(String rut, String contrasenna) {
@@ -26,16 +35,21 @@ public boolean validarLogin(String rut, String contrasenna) {
 
         // Verificar si se encontró un usuario y la contraseña es correcta
         if (usuario != null && usuario.getContraseña().equals(contrasenna)) {
-            System.out.println("Conexión Válida");
+            JOptionPane.showMessageDialog(null, "Ingreso correcto", "Informacion", JOptionPane.INFORMATION_MESSAGE);
             return true;
         } else {
-            System.out.println("Conexión Inválida");
+            JOptionPane.showMessageDialog(null, "No coincide el usuario y/o la contraseña", "Informacion", JOptionPane.WARNING_MESSAGE);
             return false;
         }
     } catch (Exception e) {
-        // Manejar la excepción (puedes imprimir el error o registrar en un log)
+         
         e.printStackTrace();
         return false;
     }
- }
+}
+
+ 
+   
+
+
 }

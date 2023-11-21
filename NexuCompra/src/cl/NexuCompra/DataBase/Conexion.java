@@ -9,6 +9,12 @@ public class Conexion implements AutoCloseable {
 
     private Connection connection;
 
+    public Conexion(Connection connection) {
+        this.connection = connection;
+    }
+    
+    
+
     public Conexion() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

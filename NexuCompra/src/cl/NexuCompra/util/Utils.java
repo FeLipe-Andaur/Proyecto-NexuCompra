@@ -1,6 +1,7 @@
 
 package cl.NexuCompra.util;
 
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -10,10 +11,16 @@ import javax.swing.JTextField;
 public class Utils {
     
     
-       private String obtenerInput(JTextField campo){
+       public static String obtenerInput(JTextField campo){
       
-       return campo.getText();
+        return campo.getText();
       
+      } 
+       
+       public static String obtenerInputPassword(JPasswordField campo){
+      
+        return String.valueOf(campo.getPassword());
+        
       } 
     
 }

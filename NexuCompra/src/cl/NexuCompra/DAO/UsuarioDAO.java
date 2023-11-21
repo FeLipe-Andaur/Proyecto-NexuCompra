@@ -82,25 +82,20 @@ public class UsuarioDAO {
         }
     }
     
-    public Usuario buscarUsuarioPorRut(String rut)
-    {
-        Usuario user = new Usuario();
-        try {
-            Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexion();
-            
-            String query = "select * from usuario where rut=?";
-            PreparedStatement stmt = cnx.prepareStatement(query);
+    public Usuario buscarUsuarioPorRut(String rut) {
+    Usuario user = new Usuario();
+    try {
+        Conexion con = new Conexion();
+        Connection cnx = con.obtenerConexion();
+        String query = "SELECT * FROM usuario WHERE rut=?";
+        try (PreparedStatement stmt = cnx.prepareStatement(query)) {
             stmt.setString(1, rut);
-            
             ResultSet rs = stmt.executeQuery();
-            
             if (rs.next()) {
-                
+                user.setRut(rs.getString("rut"));
                 user.setNombre(rs.getString("nombre"));
                 user.setApellido(rs.getString("apellido"));
-                user.setRut(rs.getString("rut"));
-                user.setCorreo(rs.getString("correo"));
+                user.setCorreo(rs.getString("correo"));  
                 user.setContraseña(rs.getString("contraseña"));
                 
                 System.out.println("Informacion del usuario encontrado:");
@@ -109,22 +104,19 @@ public class UsuarioDAO {
                 System.out.println("Apellido: " + user.getApellido());
                 System.out.println("correo: " + user.getCorreo());
                 System.out.println("contraseña: " + user.getContraseña());
-                                
             }else{
-            
-             System.out.println(" No se encontro el producto con el codigo: " + rut);
+              System.out.println(" No se encontro el producto con el codigo: " + rut);
             }
-            
-            
             rs.close();
             stmt.close();
             cnx.close();
-            
-        } catch (SQLException e) {
-            System.out.println("Error SQL al listar usuario por rut" + e.getMessage() );
         }
-        return user;
+    } catch (SQLException e) {
+        System.out.println("Error SQL al buscar usuario por rut: " + e.getMessage());
     }
+    return user;
+}
+
     
      public ArrayList<Usuario> buscarTodosUsuarios()
     {
@@ -160,7 +152,8 @@ public class UsuarioDAO {
         }
         return lista;
     }
-    
+
+   
     
     
     

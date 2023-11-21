@@ -1,12 +1,12 @@
 
 package cl.NexuCompra.vista;
 
-import cl.NexuCompra.DataBase.Conexion;
-import com.sun.jdi.connect.spi.Connection;
 import java.awt.event.KeyEvent;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import cl.NexuCompra.controlador.ContLogin;
+import cl.NexuCompra.util.Utils;
+import cl.NexuCompra.DataBase.Conexion;
+import java.sql.Connection;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -15,19 +15,23 @@ import javax.swing.JTextField;
  */
 public class JF_Login extends javax.swing.JFrame {
     
+    private ContLogin cl;
     private Conexion con;
-    private Connection connection;
-
+   
+    Conexion con = new Conexion();
 
     /**
      * Creates new form JF_Login
      */
-    public JF_Login() throws SQLException {
+    public JF_Login() {
         initComponents();
         
+        
+        
         /*Inicializaciones*/
-        this.con= new Conexion();
-        this.connection = null;
+        this.cl = new ContLogin();
+        
+        
     }
 
     /**
@@ -38,202 +42,126 @@ public class JF_Login extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        JPanel_Login = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTxt_email = new javax.swing.JTextField();
-        jTxt_contraseña = new javax.swing.JTextField();
-        jBtn_login = new javax.swing.JButton();
-        JPanel_Logo = new javax.swing.JPanel();
+        jPass_contrasenna = new javax.swing.JPasswordField();
+        jBttn_ingresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("NexuCompra");
-        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        JPanel_Login.setBackground(new java.awt.Color(255, 102, 0));
-        JPanel_Login.setPreferredSize(new java.awt.Dimension(100, 100));
-        JPanel_Login.setLayout(new java.awt.GridBagLayout());
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
+        jLabel1.setText(" ¡Inicie Sesión!");
 
-        jPanel1.setBackground(new java.awt.Color(255, 102, 0));
-        jPanel1.setPreferredSize(new java.awt.Dimension(100, 100));
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("Correo");
 
-        jLabel1.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(229, 229, 229));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("¡Inicie Sesión\"");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel1.setMinimumSize(new java.awt.Dimension(100, 33));
-        jLabel1.setPreferredSize(new java.awt.Dimension(100, 33));
-        jPanel1.add(jLabel1, java.awt.BorderLayout.CENTER);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.weighty = 0.8;
-        JPanel_Login.add(jPanel1, gridBagConstraints);
-
-        jPanel2.setBackground(new java.awt.Color(255, 102, 0));
-        jPanel2.setPreferredSize(new java.awt.Dimension(335, 592));
-        java.awt.GridBagLayout jPanel2Layout = new java.awt.GridBagLayout();
-        jPanel2Layout.columnWidths = new int[] {0, 20, 0, 20, 0, 20, 0, 20, 0, 20, 0};
-        jPanel2Layout.rowHeights = new int[] {0, 20, 0, 20, 0};
-        jPanel2.setLayout(jPanel2Layout);
-
-        jLabel2.setForeground(new java.awt.Color(229, 229, 229));
-        jLabel2.setText("Correo Electronico");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel2.add(jLabel2, gridBagConstraints);
-
-        jLabel3.setForeground(new java.awt.Color(229, 229, 229));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Contraseña");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel2.add(jLabel3, gridBagConstraints);
 
-        jTxt_email.setMinimumSize(new java.awt.Dimension(64, 30));
-        jTxt_email.setPreferredSize(new java.awt.Dimension(71, 25));
         jTxt_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxt_emailActionPerformed(evt);
             }
         });
-        jTxt_email.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTxt_emailKeyPressed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.1;
-        jPanel2.add(jTxt_email, gridBagConstraints);
 
-        jTxt_contraseña.setPreferredSize(new java.awt.Dimension(71, 25));
-        jTxt_contraseña.addActionListener(new java.awt.event.ActionListener() {
+        jPass_contrasenna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxt_contraseñaActionPerformed(evt);
+                jPass_contrasennaActionPerformed(evt);
             }
         });
-        jTxt_contraseña.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTxt_contraseñaKeyPressed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        jPanel2.add(jTxt_contraseña, gridBagConstraints);
 
-        jBtn_login.setText("Ingresar");
-        jBtn_login.setPreferredSize(new java.awt.Dimension(75, 30));
-        jBtn_login.addActionListener(new java.awt.event.ActionListener() {
+        jBttn_ingresar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jBttn_ingresar.setText("Ingresar");
+        jBttn_ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtn_loginActionPerformed(evt);
+                jBttn_ingresarActionPerformed(evt);
             }
         });
-        jBtn_login.addKeyListener(new java.awt.event.KeyAdapter() {
+        jBttn_ingresar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jBtn_loginKeyPressed(evt);
+                jBttn_ingresarKeyPressed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel2.add(jBtn_login, gridBagConstraints);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.weighty = 0.8;
-        JPanel_Login.add(jPanel2, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 0.4;
-        gridBagConstraints.weighty = 1.0;
-        getContentPane().add(JPanel_Login, gridBagConstraints);
-
-        JPanel_Logo.setBackground(new java.awt.Color(229, 229, 229));
-        JPanel_Logo.setPreferredSize(new java.awt.Dimension(100, 100));
-
-        javax.swing.GroupLayout JPanel_LogoLayout = new javax.swing.GroupLayout(JPanel_Logo);
-        JPanel_Logo.setLayout(JPanel_LogoLayout);
-        JPanel_LogoLayout.setHorizontalGroup(
-            JPanel_LogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(258, 258, 258)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTxt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPass_contrasenna, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(312, 312, 312)
+                        .addComponent(jBttn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(346, 346, 346)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(332, 332, 332)
+                        .addComponent(jLabel3)))
+                .addContainerGap(291, Short.MAX_VALUE))
         );
-        JPanel_LogoLayout.setVerticalGroup(
-            JPanel_LogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(jLabel1)
+                .addGap(132, 132, 132)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jTxt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jPass_contrasenna, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jBttn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(170, Short.MAX_VALUE))
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 0.6;
-        getContentPane().add(JPanel_Logo, gridBagConstraints);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         setSize(new java.awt.Dimension(800, 700));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTxt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxt_emailActionPerformed
-        
+        // TODO add your handling code here:
     }//GEN-LAST:event_jTxt_emailActionPerformed
 
-    private void jBtn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_loginActionPerformed
-        
-    }//GEN-LAST:event_jBtn_loginActionPerformed
-
-    private void jTxt_emailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxt_emailKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
-            jBtn_login.doClick();
-        }
-    }//GEN-LAST:event_jTxt_emailKeyPressed
-
-    private void jBtn_loginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtn_loginKeyPressed
-       if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
-            jBtn_login.doClick();
-    }//GEN-LAST:event_jBtn_loginKeyPressed
-    }
-    private void jTxt_contraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxt_contraseñaKeyPressed
-         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
-            jBtn_login.doClick();
-    }//GEN-LAST:event_jTxt_contraseñaKeyPressed
-   }
-    private void jTxt_contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxt_contraseñaActionPerformed
+    private void jPass_contrasennaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPass_contrasennaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTxt_contraseñaActionPerformed
-    /*Metodos custumizados*/
-   
+    }//GEN-LAST:event_jPass_contrasennaActionPerformed
+
+    private void jBttn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBttn_ingresarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBttn_ingresarActionPerformed
+
+    private void jBttn_ingresarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBttn_ingresarKeyPressed
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                       
+    }
+    }//GEN-LAST:event_jBttn_ingresarKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -264,25 +192,18 @@ public class JF_Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new JF_Login().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JF_Login.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new JF_Login().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel JPanel_Login;
-    private javax.swing.JPanel JPanel_Logo;
-    private javax.swing.JButton jBtn_login;
+    private javax.swing.JButton jBttn_ingresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTxt_contraseña;
+    private javax.swing.JPasswordField jPass_contrasenna;
     private javax.swing.JTextField jTxt_email;
     // End of variables declaration//GEN-END:variables
 }
