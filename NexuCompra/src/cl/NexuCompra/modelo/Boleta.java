@@ -1,8 +1,6 @@
 
 package cl.NexuCompra.modelo;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Andaur - Cornejo
@@ -10,17 +8,91 @@ import java.util.ArrayList;
  */
 public class Boleta {
     
-    ArrayList<Producto>ColeccionProd;
+    private String nombreb, rutb, apellidob, nombreprob, descripcionb;
+    
+    private int codigob, preciob, cantidadb;
 
     public Boleta() {
-        ColeccionProd = new ArrayList<>();
     }
-     
-    public boolean agregarProducto(Producto prod){
-    
-        return ColeccionProd.add(prod);
-    
+
+    public Boleta(String nombreb, String rutb, String apellidob, String nombreprob, String descripcionb, int codigob, int preciob, int cantidadb) {
+        this.nombreb = nombreb;
+        this.rutb = rutb;
+        this.apellidob = apellidob;
+        this.nombreprob = nombreprob;
+        this.descripcionb = descripcionb;
+        this.codigob = codigob;
+        this.preciob = preciob;
+        this.cantidadb = cantidadb;
     }
-    
+
+    public String getNombreb() {
+        return nombreb;
+    }
+
+    public void setNombreb(String nombreb) {
+        this.nombreb = nombreb;
+    }
+
+    public String getRutb() {
+        return rutb;
+    }
+
+    public void setRutb(String rutb) {
+        this.rutb = rutb;
+    }
+
+    public String getApellidob() {
+        return apellidob;
+    }
+
+    public void setApellidob(String apellidob) {
+        this.apellidob = apellidob;
+    }
+
+    public String getNombreprob() {
+        return nombreprob;
+    }
+
+    public void setNombreprob(String nombreprob) {
+        this.nombreprob = nombreprob;
+    }
+
+    public String getDescripcionb() {
+        return descripcionb;
+    }
+
+    public void setDescripcionb(String descripcionb) {
+        this.descripcionb = descripcionb;
+    }
+
+    public int getCodigob() {
+        return codigob;
+    }
+
+    public void setCodigob(int codigob) {
+        this.codigob = codigob;
+    }
+
+    public int getPreciob() {
+        return preciob;
+    }
+
+    public void setPreciob(int preciob) {
+        this.preciob = preciob;
+    }
+
+    public int getCantidadb() {
+        return cantidadb;
+    }
+
+    public void setCantidadb(int cantidadb) {
+        this.cantidadb = cantidadb;
+    }
+
+    @Override
+    public String toString() {
+        return "Boleta{" + "nombreb=" + nombreb + ", rutb=" + rutb + ", apellidob=" + apellidob + ", nombreprob=" + nombreprob + ", descripcionb=" + descripcionb + ", codigob=" + codigob + ", preciob=" + preciob + ", cantidadb=" + cantidadb + '}';
+    }
     
 }

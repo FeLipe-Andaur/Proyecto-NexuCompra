@@ -36,7 +36,6 @@ public class Principal extends javax.swing.JFrame {
         jbtn_ingresar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(580, 500));
         setResizable(false);
 
         jlbl_nombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -45,12 +44,22 @@ public class Principal extends javax.swing.JFrame {
         jlbl_rut.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jlbl_rut.setText("Rut:");
 
+        jtxt_nombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxt_nombreFocusGained(evt);
+            }
+        });
         jtxt_nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxt_nombreActionPerformed(evt);
             }
         });
 
+        jtxt_rut.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxt_rutFocusGained(evt);
+            }
+        });
         jtxt_rut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxt_rutActionPerformed(evt);
@@ -63,6 +72,12 @@ public class Principal extends javax.swing.JFrame {
         jlbl_apellido.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jlbl_apellido.setText("Apellido:");
 
+        jtxt_apellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxt_apellidoFocusGained(evt);
+            }
+        });
+
         jbtn_ingresar.setText("Ingresar");
         jbtn_ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,9 +89,10 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(140, 140, 140)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(114, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jlbl_apellido)
@@ -93,10 +109,6 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jbtn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(25, 25, 25)))))
-                .addGap(0, 150, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
                 .addGap(176, 176, 176))
         );
         layout.setVerticalGroup(
@@ -138,6 +150,18 @@ public class Principal extends javax.swing.JFrame {
         
         ventana.setVisible(true);
     }//GEN-LAST:event_jbtn_ingresarActionPerformed
+
+    private void jtxt_nombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_nombreFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_nombreFocusGained
+
+    private void jtxt_apellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_apellidoFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_apellidoFocusGained
+
+    private void jtxt_rutFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_rutFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_rutFocusGained
 
     /**
      * @param args the command line arguments
