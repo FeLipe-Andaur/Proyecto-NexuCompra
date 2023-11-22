@@ -156,7 +156,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbtn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_ingresarActionPerformed
         try {
-            Registro reg = new Registro(jtxt_nombre.getText(), jtxt_nombre.getText(), jtxt_rut.getText());
+            Registro reg = new Registro(jtxt_nombre.getText(), jtxt_apellido.getText(), jtxt_rut.getText());
             reg.agregarUsuario(user)
         } catch (Exception e) {
         }

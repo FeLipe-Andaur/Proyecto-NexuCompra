@@ -288,23 +288,15 @@ public class Registro {
         }
         
         } catch (SQLException e) {
-            System.out.println("Error SQL al listar usuarios: " + e.getMessage() );
+            System.out.println("Error SQL al listar usuarios: " + e.getMessage());
         }
         return lista;
     }
      
      public boolean validarRegistro(String nombre, String apellido,String rut){
      
-         try {
-             
-             
-         } catch (Exception e) {
-         }
-         
-              
-          
-          }
-     
+                              
+               
      }
      
      

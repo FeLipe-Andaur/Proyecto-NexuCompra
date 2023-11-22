@@ -54,11 +54,11 @@ public class NewClass {
   
             
         
-        Boleta bol = new Boleta();
+       // Boleta bol = new Boleta();
         
-        bol.agregarProducto(prod1);
-        bol.agregarProducto(prod2);
-        bol.agregarProducto(prod3);
+       // bol.agregarProducto(prod1);
+      // bol.agregarProducto(prod2);
+       // bol.agregarProducto(prod3);
        
         
      
