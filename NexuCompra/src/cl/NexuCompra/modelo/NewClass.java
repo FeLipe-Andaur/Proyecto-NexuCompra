@@ -17,7 +17,8 @@ public class NewClass {
     public static void main(String[] args) throws SQLException {
                         
               
-            
+        /*Base de Datos*/    
+        
         Producto prod1 = new Producto("chetos", "light", 12344, 2000, 3);
         Producto prod2 = new Producto("cafe", "nescafe", 12245, 7000, 2);
         Producto prod3 = new Producto("pan", "marraqueta", 88734, 4200, 15);
@@ -29,7 +30,9 @@ public class NewClass {
         
         
         
-        //Productos
+        
+        
+        /*Productos*/
         
         //boolean prodDAO = new ProductoDAO().agregarProducto(prod4);//Funciona
         //boolean prodDAO = new ProductoDAO().eliminarProducto(12344);//Funciona
@@ -38,7 +41,7 @@ public class NewClass {
        // ArrayList<Producto> prodDAO = new ProductoDAO().buscarTodosProductos();//Funciona
         
         
-        //Usuarios
+        /*Usuarios*/
         
         //boolean userDAO = new UsuarioDAO().agregarUsuario(user3);//Funciona
        //   boolean userDAO = new UsuarioDAO().eliminarUsuario("154632789");//Funciona
@@ -53,13 +56,7 @@ public class NewClass {
         
   
             
-        
-       // Boleta bol = new Boleta();
-        
-       // bol.agregarProducto(prod1);
-      // bol.agregarProducto(prod2);
-       // bol.agregarProducto(prod3);
-       
+
         
      
         
