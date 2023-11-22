@@ -293,11 +293,11 @@ public class Registro {
         return lista;
     }
      
-     public boolean validarRegistro(String nombre, String apellido,String rut){
+     //public boolean validarRegistro(String nombre, String apellido,String rut){
      
                               
                
-     }
+     //}
      
      
      

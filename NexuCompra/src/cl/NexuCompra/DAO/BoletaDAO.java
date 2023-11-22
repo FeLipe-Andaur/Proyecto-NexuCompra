@@ -24,14 +24,14 @@ public class BoletaDAO {
             
          PreparedStatement stmt = cnx.prepareStatement(query)) {
 
-        stmt.setString(1, bol.getNombre());
-        stmt.setString(2, bol.getDescripcion());
-        stmt.setInt(3, bol.getCodigo());
-        stmt.setInt(4, bol.getPrecio());
-        stmt.setInt(5, bol.getCantidad());
-        stmt.setInt(6, bol.getCantidad());
-        stmt.setInt(7, bol.getCantidad());
-        stmt.setInt(8, bol.getCantidad());
+        //stmt.setString(1, bol.getNombre());
+      //  stmt.setString(2, bol.getDescripcion());
+     //   stmt.setInt(3, bol.getCodigo());
+      //  stmt.setInt(4, bol.getPrecio());
+      //  stmt.setInt(5, bol.getCantidad());
+     //   stmt.setInt(6, bol.getCantidad());
+     //   stmt.setInt(7, bol.getCantidad());
+    //    stmt.setInt(8, bol.getCantidad());
 
         stmt.executeUpdate();
         
