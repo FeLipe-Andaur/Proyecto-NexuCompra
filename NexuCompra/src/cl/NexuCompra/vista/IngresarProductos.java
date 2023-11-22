@@ -1,20 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package cl.NexuCompra.vista;
+
+import cl.NexuCompra.controlador.Registro;
 
 /**
  *
  * @author KatyS
  */
 public class IngresarProductos extends javax.swing.JFrame {
+    
+    private Registro reg;
 
     /**
      * Creates new form IngresarProductos
      */
     public IngresarProductos() {
         initComponents();
+        
+               
+        /*Inicializar*/
+        
+        this.reg =reg;
     }
 
     /**
@@ -108,7 +114,8 @@ public class IngresarProductos extends javax.swing.JFrame {
                 .addContainerGap(131, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(689, 461));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

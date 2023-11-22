@@ -16,6 +16,10 @@ import java.util.ArrayList;
  * @author Felipe
  */
 public class ProductoDAO {
+
+   
+    
+    
     
     public boolean agregarProducto(Producto prod) throws SQLException {
        

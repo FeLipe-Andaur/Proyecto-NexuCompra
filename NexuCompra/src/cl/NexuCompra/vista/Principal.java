@@ -1,20 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package cl.NexuCompra.vista;
+
+
+import cl.NexuCompra.controlador.Registro;
+import cl.NexuCompra.modelo.Usuario;
 
 /**
  *
  * @author Felipe
  */
 public class Principal extends javax.swing.JFrame {
+    
+    private Registro reg;
 
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
+        
+        
+        
+        /*Inicializar*/
+        
+        this.reg = new Registro();
     }
 
     /**
@@ -146,9 +155,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxt_rutActionPerformed
 
     private void jbtn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_ingresarActionPerformed
-        IngresarProductos ventana = new IngresarProductos();
-        
-        ventana.setVisible(true);
+        try {
+            Registro reg = new Registro(jtxt_nombre.getText(), jtxt_nombre.getText(), jtxt_rut.getText());
+            reg.agregarUsuario(user)
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_jbtn_ingresarActionPerformed
 
     private void jtxt_nombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_nombreFocusGained

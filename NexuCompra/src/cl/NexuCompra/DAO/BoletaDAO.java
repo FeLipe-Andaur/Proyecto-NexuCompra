@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package cl.NexuCompra.DAO;
 
 import cl.NexuCompra.DataBase.Conexion;
+import cl.NexuCompra.modelo.Boleta;
 import cl.NexuCompra.modelo.Producto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

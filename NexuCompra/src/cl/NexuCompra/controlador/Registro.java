@@ -4,6 +4,7 @@ package cl.NexuCompra.controlador;
 import cl.NexuCompra.DataBase.Conexion;
 import cl.NexuCompra.modelo.Producto;
 import cl.NexuCompra.modelo.Usuario;
+import cl.NexuCompra.DAO.UsuarioDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,7 +16,21 @@ import java.util.ArrayList;
  * @author Andaur-Cornejo
  */
 public class Registro {
+
+   private UsuarioDAO userDAO;
+   private Usuario user;
+
+    public Registro() {
+        
+        this.userDAO = new UsuarioDAO();
+        this.user = new Usuario();
+    }
    
+   
+   
+
+         
+            
    public boolean agregarProducto(Producto prod) throws SQLException {
        
     String query = "INSERT INTO producto(nombre, descripcion, codigo, precio, cantidad) VALUES(?,?,?,?,?)";
@@ -277,5 +292,25 @@ public class Registro {
         }
         return lista;
     }
+     
+     public boolean validarRegistro(String nombre, String apellido,String rut){
+     
+         try {
+             
+             
+         } catch (Exception e) {
+         }
+         
+              
+          
+          }
+     
+     }
+     
+     
+     
+ 
+     
+     
 
 }
